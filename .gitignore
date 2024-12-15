@@ -1,0 +1,6 @@
+node_modules
+.env.yaml
+dist
+prompt
+scripts
+package-lock.json

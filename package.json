@@ -1,0 +1,25 @@
+{
+  "name": "buddy-paws-cloud-func-api",
+  "version": "1.0.0",
+  "main": "dist/src/functions/getDirection/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start:searchPlaces": "functions-framework --target=searchPlaces",
+    "dev:searchPlaces": "npm run build && npm run start:searchPlaces",
+    "deploy:searchPlaces": "npm run build && gcloud functions deploy searchPlaces --gen2 --runtime=nodejs20 --region=asia-southeast1 --source=. --entry-point=searchPlaces --trigger-http --env-vars-file .env.yaml",
+    "start:getDirection": "functions-framework --target=getDirection",
+    "dev:getDirection": "npm run build && npm run start:getDirection",
+    "deploy:getDirection": "npm run build && gcloud functions deploy getDirection --gen2 --runtime=nodejs20 --region=asia-southeast1 --source=. --entry-point=getDirection --trigger-http --env-vars-file .env.yaml"
+  },
+  "dependencies": {
+    "@google-cloud/functions-framework": "^3.4.2",
+    "@google-cloud/logging": "^11.2.0",
+    "@google-cloud/vertexai": "^1.9.2",
+    "axios": "^1.7.9",
+    "firebase-admin": "^13.0.1"
+  },
+  "devDependencies": {
+    "@types/google.maps": "^3.58.1",
+    "typescript": "^5.7.2"
+  }
+}
